@@ -4,13 +4,12 @@
     v-model="drawer"
     :dark="dark"
     :right="$vuetify.rtl"
-    :src="drawerImage ? image : ''"
     :mini-variant.sync="mini"
     mini-variant-width="80"
     app
     width="260"
   >
-    <template
+    <!-- <template
       v-if="drawerImage"
       #img="props"
     >
@@ -19,7 +18,7 @@
         :gradient="gradient"
         v-bind="props"
       />
-    </template>
+    </template> -->
 
     <div class="px-2">
       <default-drawer-header />

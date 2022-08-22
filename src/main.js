@@ -1,18 +1,20 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import vuetify from './plugins/vuetify'
-import './plugins'
-import store from './store'
-import { sync } from 'vuex-router-sync'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import vuetify from "./plugins/vuetify";
+import "./plugins";
+import store from "./store";
+import { sync } from "vuex-router-sync";
+import apolloProvider from "./plugins/apollo";
+import "@/permission";
+Vue.config.productionTip = false;
 
-Vue.config.productionTip = false
-
-sync(store, router)
+sync(store, router);
 
 new Vue({
   router,
   vuetify,
   store,
-  render: h => h(App),
-}).$mount('#app')
+  apolloProvider,
+  render: (h) => h(App),
+}).$mount("#app");

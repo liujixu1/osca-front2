@@ -3,24 +3,18 @@
     id="default-app-bar"
     app
     absolute
-    class="v-bar--underline"
-    color="transparent"
+    class="v-bar--underline header"
+    color="#fff"
     :clipped-left="$vuetify.rtl"
     :clipped-right="!$vuetify.rtl"
     height="70"
     flat
   >
-    <v-app-bar-nav-icon
-      class="hidden-md-and-up"
-      @click="drawer = !drawer"
-    />
+    <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer" />
 
     <default-drawer-toggle class="hidden-sm-and-down" />
 
-    <v-toolbar-title
-      class="font-weight-light text-h5"
-      v-text="name"
-    />
+    <v-toolbar-title class="font-weight-light text-h5" v-text="name" />
 
     <v-spacer />
 
@@ -28,48 +22,56 @@
 
     <default-go-home />
 
-    <default-notifications />
+    <!-- <default-notifications /> -->
 
     <default-account />
   </v-app-bar>
 </template>
 
 <script>
-  // Utilities
-  import { get, sync } from 'vuex-pathify'
+// Utilities
+import { get, sync } from "vuex-pathify";
+export default {
+  name: "DefaultBar",
 
-  export default {
-    name: 'DefaultBar',
-
-    components: {
-      DefaultAccount: () => import(
+  components: {
+    DefaultAccount: () =>
+      import(
         /* webpackChunkName: "default-account" */
-        './widgets/Account'
+        "./widgets/Account"
       ),
-      DefaultDrawerToggle: () => import(
+    DefaultDrawerToggle: () =>
+      import(
         /* webpackChunkName: "default-drawer-toggle" */
-        './widgets/DrawerToggle'
+        "./widgets/DrawerToggle"
       ),
-      DefaultGoHome: () => import(
+    DefaultGoHome: () =>
+      import(
         /* webpackChunkName: "default-go-home" */
-        './widgets/GoHome'
+        "./widgets/GoHome"
       ),
-      DefaultNotifications: () => import(
+    DefaultNotifications: () =>
+      import(
         /* webpackChunkName: "default-notifications" */
-        './widgets/Notifications'
+        "./widgets/Notifications"
       ),
-      DefaultSearch: () => import(
+    DefaultSearch: () =>
+      import(
         /* webpackChunkName: "default-search" */
-        './widgets/Search'
+        "./widgets/Search"
       ),
-    },
+  },
 
-    computed: {
-      ...sync('app', [
-        'drawer',
-        'mini',
-      ]),
-      name: get('route/name'),
-    },
-  }
+  computed: {
+    ...sync("app", ["drawer", "mini"]),
+    name: get("route/name"),
+  },
+};
 </script>
+<style lang="scss" scoped>
+.header {
+  background: #fff;
+  box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
+    0 1px 18px 0 rgb(0 0 0 / 12%);
+}
+</style>

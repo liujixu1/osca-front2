@@ -4,18 +4,21 @@
     nav
     v-bind="$attrs"
     v-on="$listeners"
+    flat
   >
     <template v-for="(item, i) in items">
       <default-list-group
         v-if="item.items"
-        :key="`group-${i}`"
+        :key="`${item.title}-group-${i}`"
         :item="item"
+        :level="1"
       />
 
       <default-list-item
         v-else
-        :key="`item-${i}`"
+        :key="`${item.title}-item-${i}`"
         :item="item"
+        :level="1"
       />
     </template>
   </v-list>

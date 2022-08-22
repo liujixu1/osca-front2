@@ -1,0 +1,27 @@
+version: '3.2'
+services:
+  db:
+    image: 'mysql:8'
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  redis:
+    image: 'redis:6'
+    ports:
+      - '6379:6379'
+  backend:
+    image: 'aleczheng/osca'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+      - redis
+    environment:
+      - MYSQL_HOST=db
+      - REDIS_HOST=redis
+      - MYSQL_PASSWORD=root
+      - HMAC_SECRET=zUjORDhpIRm7SUD36/yN99sfafafdwerafdfwerwrewr/+qvkE4rc9f3AZBr17youU=
+      - GITEE_CLIENT_SECRET=8d8a2a2b1edde983feeca792f8f4090768bad5f74d28729ef86a182e23d1fc5a
+      - GITHUB_CLIENT_SECRET=b136a353528610f8ee3d595fc24d7ea88e7df43b

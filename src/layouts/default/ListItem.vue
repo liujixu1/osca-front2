@@ -4,12 +4,13 @@
     :rel="item.href ? 'nofollow' : undefined"
     :target="item.href ? '_blank' : undefined"
     :to="item.to"
-    active-class="primary white--text"
+    active-class="primary list-shadow black--text rounded-lg"
     link
-    class="py-1"
+    :class="['py-1']"
     v-bind="$attrs"
     v-on="$listeners"
   >
+    <template v-if="level===1">
     <v-list-item-icon
       v-if="!item.icon"
       class="text-caption text-uppercase justify-center ml-1 my-2 align-self-center"
@@ -27,7 +28,8 @@
     >
       <v-icon v-text="item.icon" />
     </v-list-item-icon>
-
+    </template>
+    <v-list-item-icon v-else></v-list-item-icon>
     <v-list-item-content v-if="item.title">
       <v-list-item-title v-text="item.title" />
     </v-list-item-content>
@@ -43,6 +45,10 @@
         type: Object,
         default: () => ({}),
       },
+      level: {
+        type:Number,
+        default: 1
+      }
     },
 
     computed: {
@@ -52,5 +58,13 @@
         return matches.join('')
       },
     },
+    // mounted(){
+    //   console.log(this.level);
+    // }
   }
 </script>
+<style lang="scss">
+ .list-shadow{
+  box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+ }
+</style>

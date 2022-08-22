@@ -1,5 +1,5 @@
 // Pathify
-import { make } from 'vuex-pathify'
+import { make } from "vuex-pathify";
 
 // Data
 const state = {
@@ -8,53 +8,63 @@ const state = {
   mini: false,
   items: [
     {
-      title: 'Dashboard',
-      icon: 'mdi-view-dashboard',
-      to: '/',
+      title: "Dashboard",
+      icon: "mdi-view-dashboard",
+      to: "/components/dashboard",
     },
     {
-      title: 'User Profile',
-      icon: 'mdi-account',
-      to: '/components/profile/',
+      title: "User Profile",
+      icon: "mdi-account",
+      to: "/components/profile",
     },
     {
-      title: 'Regular Tables',
-      icon: 'mdi-clipboard-outline',
-      to: '/tables/regular/',
+      title: "Regular Tables",
+      icon: "mdi-clipboard-outline",
+      to: "/tables/regular",
     },
     {
-      title: 'Typography',
-      icon: 'mdi-format-font',
-      to: '/components/typography/',
+      title: "Typography",
+      icon: "mdi-format-font",
+      to: "/components/typography",
     },
     {
-      title: 'Icons',
-      icon: 'mdi-chart-bubble',
-      to: '/components/icons/',
+      title: "Icons",
+      icon: "mdi-chart-bubble",
+      to: "/components/icons",
     },
     {
-      title: 'Google Maps',
-      icon: 'mdi-map-marker',
-      to: '/maps/google/',
+      title: "Google Maps",
+      icon: "mdi-map-marker",
+      to: "/maps/google",
     },
     {
-      title: 'Notifications',
-      icon: 'mdi-bell',
-      to: '/components/notifications/',
+      title: "Notifications",
+      icon: "mdi-bell",
+      to: "/components/notifications",
+    },
+    {
+      title: "Code Snippet",
+      icon: "mdi-bell",
+      to: "/codesnippet",
+    },
+    {
+      title: "开源片段",
+      icon: "mdi-bell",
+      to: "/sca",
     },
   ],
-}
+};
 
-const mutations = make.mutations(state)
+const mutations = make.mutations(state);
 
 const actions = {
   ...make.actions(state),
   init: async ({ dispatch }) => {
     //
   },
-}
+};
 
-const getters = {}
+const getters = {};
 
 export default {
   namespaced: true,
@@ -62,4 +72,4 @@ export default {
   mutations,
   actions,
   getters,
-}
+};
